@@ -74,8 +74,8 @@ dados <- ssa_painel_saneamento_brasil %>%
                    `Volume de esgoto tratado (mil m³) (SNIS)`) 
 
 names(dados) = c("ano",
-                 "pop_c_agua_trat","pop_s_agua_trat","vol_agua_cons","vol_agua_cons_pc",
-                 "pop_c_coleta_esgoto","pop_s_coleta_esgoto","vol_esgoto_col","vol_esgoto_trat")
+                 "q1_pop_c_agua_trat","q2_pop_s_agua_trat","q3_vol_agua_cons","q4_vol_agua_cons_pc",
+                 "q5_pop_c_coleta_esgoto","q6_pop_s_coleta_esgoto","q7_vol_esgoto_col","q8_vol_esgoto_trat")
 
 
 
