@@ -1,14 +1,5 @@
 
 
-# impotacao dos dados 
-
-
-
-# Dados de consumo anual de água por classe em Salvador 
-# Data criacao 01/9/2021
-# Tabela de dados obtida do site 
-# http://sim.sei.ba.gov.br/metaside/consulta/frame_metadados.wsp?tmp.tabela=t128
-
 ######################################################
 # 1) Carregar bibliotecas
 
