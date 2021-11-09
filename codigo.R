@@ -113,8 +113,8 @@ for ( i in 1:length(classes)) {
   
   
   titulo<-T_ST_P_No_MEIOAMBIENTE$TITULO[i]
-  subtexto<-"SEI"
-  link <-"http://sim.sei.ba.gov.br/metaside/consulta/frame_metadados.wsp?tmp.tabela=t128" 
+  subtexto<-"Painel do Saneamento"
+  link <- T_ST_P_No_MEIOAMBIENTE$LINK[i]
   
   data_axis <- paste('[',gsub(' ',',',
                               paste(paste(as.vector(objeto_0[[1]]$ano)),
