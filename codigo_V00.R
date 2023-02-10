@@ -71,7 +71,7 @@ names(dados) = c("ano",
 
 dados %<>% gather(key = classe,
                   value = consumo,-ano) 
-dados %<>% mutate(dados, `consumo` = `consumo`/1000)
+dados %<>% mutate(dados, `consumo` = `consumo`/1000000)
 
 #dados %<>% select(-id)
 # Temas Subtemas Perguntas
@@ -125,7 +125,7 @@ for ( i in 1:length(classes)) {
                '"dataView":{"readOnly":false},"magicType":{"type":["line","bar"]},',
                '"restore":{},"saveAsImage":{}}},"xAxis":{"type":"category",',
                '"data":',data_axis,'},',
-               '"yAxis":{"type":"value","axisLabel":{"formatter":"{value} mil"}},',
+               '"yAxis":{"type":"value","axisLabel":{"formatter":"{value} M"}},',
                '"series":[{"data":',data_serie,',',
                '"type":"bar","color":"',corsec_recossa_azul[i],'","showBackground":true,',
                '"backgroundStyle":{"color":"rgba(180, 180, 180, 0.2)"},',
