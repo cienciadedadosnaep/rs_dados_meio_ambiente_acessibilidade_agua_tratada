@@ -3,7 +3,4 @@
 "Meio Ambiente";"Água Tratada";"Qual é o tamanho da população que não usufruem de acesso à água tratada?";"qt2.csv"
 "Meio Ambiente";"Água Tratada";"Qual é o volume de água consumida em Salvador?";"qt3.csv"
 "Meio Ambiente";"Água Tratada";"Qual é o volume de água consumida percapita em Salvador?";"qt4.csv"
-"Meio Ambiente";"Coleta de Esgoto";"Qual é o número de pessoas que moram em domicílios com acesso à coleta de esgoto?";"pop_c_coleta_esgoto.csv"
-"Meio Ambiente";"Coleta de Esgoto";"Qual é o número de pessoas que moram em domicílios sem acesso à coleta de esgoto?";"pop_s_coleta_esgoto.csv"
-"Meio Ambiente";"Coleta de Esgoto";"Qual é o volume de esgoto coletado em Salvador?";"vol_esgoto_col.csv"
-"Meio Ambiente";"Coleta de Esgoto";"Qual é o volume de esgoto tratado em Salvador?";"vol_esgoto_trat.csv"
+
