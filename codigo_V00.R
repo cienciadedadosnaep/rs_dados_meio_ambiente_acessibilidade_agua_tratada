@@ -72,7 +72,8 @@ names(dados) = c("ano",
 dados %<>% gather(key = classe,
                   value = consumo,-ano) 
 dados %<>% mutate(dados, `consumo` = `consumo`/1000000)
-
+dados <- subset(dados, classe == "q1_pop_c_agua_trat") 
+dados <- dados %<>% mutate(across(`consumo`, ~round(.x,1)))
 #dados %<>% select(-id)
 # Temas Subtemas Perguntas
 
@@ -86,17 +87,17 @@ SAIDA_POVOAMENTO <- T_ST_P_No_MEIOAMBIENTE %>%
   select(TEMA,SUBTEMA,PERGUNTA,NOME_ARQUIVO_JS)
 SAIDA_POVOAMENTO <- as.data.frame(SAIDA_POVOAMENTO)
 
-classes <- NULL
-classes <- levels(as.factor(dados$classe))
+#classes <- NULL
+#classes <- levels(as.factor(dados$classe))
 
 # Cores secundarias paleta pantone -
 corsec_recossa_azul <- c('#175676','#62acd1','#8bc6d2','#20cfef',
                          '#d62839','#20cfef','#fe4641','#175676')
 
-for ( i in 1:length(classes)) {
+#for ( i in 1:length(classes)) {
   
   objeto_0 <- dados %>%
-    filter(classe %in% c(classes[i])) %>%
+   # filter(classe %in% c(classes[i])) %>%
     select(ano,consumo) %>% filter(ano<2018) %>%
     arrange(ano) %>%
     mutate(ano = as.character(ano)) %>% list()               
@@ -104,9 +105,9 @@ for ( i in 1:length(classes)) {
   exportJson0 <- toJSON(objeto_0)
   
   
-  titulo<-T_ST_P_No_MEIOAMBIENTE$TITULO[i]
+  titulo<-T_ST_P_No_MEIOAMBIENTE$TITULO[1]
   subtexto<-"Fonte: Painel do Saneamento"
-  link <- T_ST_P_No_MEIOAMBIENTE$LINK[i]
+  link <- T_ST_P_No_MEIOAMBIENTE$LINK[1]
   
   data_axis <- paste('[',gsub(' ',',',
                               paste(paste(as.vector(objeto_0[[1]]$ano)),
@@ -119,13 +120,14 @@ for ( i in 1:length(classes)) {
   texto<-paste('{"title":{"text":"',titulo,
                '","subtext":"',subtexto,
                '","sublink":"',link,'"},',
-               '"tooltip":{"trigger":"axis"},',
+               '"tooltip":{"trigger":"item","responsive":"true","position":"top","formatter":"{c0} M"},',
                '"toolbox":{"left":"center","orient":"horizontal","itemSize":20,"top":20,"show":true,',
                '"feature":{"dataZoom":{"yAxisIndex":"none"},',
                '"dataView":{"readOnly":false},"magicType":{"type":["line","bar"]},',
                '"restore":{},"saveAsImage":{}}},"xAxis":{"type":"category",',
                '"data":',data_axis,'},',
                '"yAxis":{"type":"value","axisLabel":{"formatter":"{value} M"}},',
+               '"graphic":[{"type":"text", "left":"center","top":"bottom","z":100, "style":{"fill":"gray","text":"Obs: Ponto é separador decimal", "font":"8px sans-srif","fontSize":12}}],',
                '"series":[{"data":',data_serie,',',
                '"type":"bar","color":"',corsec_recossa_azul[i],'","showBackground":true,',
                '"backgroundStyle":{"color":"rgba(180, 180, 180, 0.2)"},',
@@ -135,12 +137,12 @@ for ( i in 1:length(classes)) {
   texto<-noquote(texto)
   
   
-  write(exportJson0,file = paste('data/',gsub('.csv','',T_ST_P_No_MEIOAMBIENTE$NOME_ARQUIVO_JS[i]),
+  write(exportJson0,file = paste('data/',gsub('.csv','',T_ST_P_No_MEIOAMBIENTE$NOME_ARQUIVO_JS[1]),
                                  '.json',sep =''))
-  write(texto,file = paste('data/',T_ST_P_No_MEIOAMBIENTE$NOME_ARQUIVO_JS[i],
+  write(texto,file = paste('data/',T_ST_P_No_MEIOAMBIENTE$NOME_ARQUIVO_JS[1],
                            sep =''))
   
-}
+#}
 
 # Arquivo dedicado a rotina de atualizacao global. 
 
