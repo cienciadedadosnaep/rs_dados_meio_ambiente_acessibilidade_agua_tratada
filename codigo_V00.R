@@ -73,7 +73,7 @@ dados %<>% gather(key = classe,
                   value = consumo,-ano) 
 dados %<>% mutate(dados, `consumo` = `consumo`/1000000)
 dados <- subset(dados, classe == "q1_pop_c_agua_trat") 
-dados <- dados %<>% mutate(across(`consumo`, ~round(.x,1)))
+dados <- dados %<>% mutate(across(`consumo`, ~round(.x,2)))
 #dados %<>% select(-id)
 # Temas Subtemas Perguntas
 
@@ -129,9 +129,9 @@ corsec_recossa_azul <- c('#175676','#62acd1','#8bc6d2','#20cfef',
                '"yAxis":{"type":"value","axisLabel":{"formatter":"{value} M"}},',
                '"graphic":[{"type":"text", "left":"center","top":"bottom","z":100, "style":{"fill":"gray","text":"Obs: Ponto é separador decimal", "font":"8px sans-srif","fontSize":12}}],',
                '"series":[{"data":',data_serie,',',
-               '"type":"bar","color":"',corsec_recossa_azul[i],'","showBackground":true,',
+               '"type":"bar","color":"',corsec_recossa_azul[1],'","showBackground":true,',
                '"backgroundStyle":{"color":"rgba(180, 180, 180, 0.2)"},',
-               '"itemStyle":{"borderRadius":10,"borderColor":"',corsec_recossa_azul[i],'","borderWidth":2}}]}',sep='')
+               '"itemStyle":{"borderRadius":10,"borderColor":"',corsec_recossa_azul[2],'","borderWidth":2}}]}',sep='')
   
   #  SAIDA_POVOAMENTO$CODIGO[i] <- texto   
   texto<-noquote(texto)
