@@ -73,6 +73,7 @@ dados %<>% gather(key = classe,
                   value = consumo,-ano) 
 #dados %<>% mutate(dados, `consumo` = `consumo`/1000000)
 dados <- subset(dados, classe == "q4_vol_agua_cons_pc")
+dados <- dados %<>% mutate(across(`consumo`, ~round(.x,0)))
 
 #dados %<>% select(-id)
 # Temas Subtemas Perguntas
@@ -120,7 +121,7 @@ data_serie <- paste('[',gsub(' ',',',
 texto<-paste('{"title":{"text":"',titulo,
              '","subtext":"',subtexto,
              '","sublink":"',link,'"},',
-             '"tooltip":{"trigger":"axis"},',
+             '"tooltip":{"trigger":"item","responsive":"true","position":"top","formatter":"{c0} L"},',
              '"toolbox":{"left":"center","orient":"horizontal","itemSize":20,"top":20,"show":true,',
              '"feature":{"dataZoom":{"yAxisIndex":"none"},',
              '"dataView":{"readOnly":false},"magicType":{"type":["line","bar"]},',
@@ -128,9 +129,9 @@ texto<-paste('{"title":{"text":"',titulo,
              '"data":',data_axis,'},',
              '"yAxis":{"type":"value","axisLabel":{"formatter":"{value} L"}},',
              '"series":[{"data":',data_serie,',',
-             '"type":"bar","color":"',corsec_recossa_azul[i],'","showBackground":true,',
+             '"type":"bar","color":"',corsec_recossa_azul[2],'","showBackground":true,',
              '"backgroundStyle":{"color":"rgba(180, 180, 180, 0.2)"},',
-             '"itemStyle":{"borderRadius":10,"borderColor":"',corsec_recossa_azul[2],'","borderWidth":2}}]}',sep='')
+             '"itemStyle":{"borderRadius":10,"borderColor":"',corsec_recossa_azul[8],'","borderWidth":2}}]}',sep='')
 
 #  SAIDA_POVOAMENTO$CODIGO[i] <- texto   
 texto<-noquote(texto)
